@@ -1,0 +1,7 @@
+[
+[model, train, predict, acc]
+[nb, 1.275, 0.201, 0.9733],
+[svm_linear, 186.063, 15.419, 0.9841],
+[svm_linear_fast, 0.083, 0.879, 0.8845],
+[svm_rbf_fast, 0.383, 2.98, 0.6160]
+]
