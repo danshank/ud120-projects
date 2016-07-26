@@ -31,12 +31,19 @@ plt.show()
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
 
+from sklearn.ensemble import RandomForestClassifier
 
+clf = RandomForestClassifier(min_samples_split=20, min_samples_leaf=5)
+clf.fit(features_train, labels_train)
 
+print clf.score(features_test, labels_test)
 
+#from sklearn.tree import DecisionTreeClassifier
 
+#clf = DecisionTreeClassifier()
+#clf.fit(features_train, labels_train)
 
-
+#print clf.score(features_test, labels_test)
 
 try:
     prettyPicture(clf, features_test, labels_test)
