@@ -19,4 +19,34 @@ import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
+print "There are %d people in the dataset" % len(enron_data)
+print "There are %d attributes for each person" % len(enron_data[enron_data.keys()[0]])
 
+count_poi = 0
+for key in enron_data.keys():
+	if enron_data[key]["poi"] == 1:
+		count_poi = count_poi + 1
+
+print "There are %d people of interest" % count_poi
+
+print "James Prentice had a $%d total stock value" % enron_data["PRENTICE JAMES"]["total_stock_value"]
+
+print "Wesley Colwell sent %d emails to poi" % enron_data["COLWELL WESLEY"]["from_this_person_to_poi"]
+
+print "Jeffery K Skilling exercised $%d of stock options" % enron_data["SKILLING JEFFREY K"]["exercised_stock_options"]
+
+print "Skilling took away $%d, Lay $%d, and Fastow $%d" % (enron_data["SKILLING JEFFREY K"]["total_payments"], enron_data["LAY KENNETH L"]["total_payments"], enron_data["FASTOW ANDREW S"]["total_payments"])
+
+count_known_sal = 0
+for key in enron_data.keys():
+	if enron_data[key]["salary"] != 'NaN':
+		count_known_sal = count_known_sal + 1
+
+print "There are %d known salaries in the dataset" % count_known_sal
+
+count_emails = 0
+for key in enron_data.keys():
+	if enron_data[key]["email_address"] != 'NaN':
+		count_emails = count_emails + 1
+
+print "There are %d emails in the dataset" % count_emails
