@@ -50,3 +50,17 @@ for key in enron_data.keys():
 		count_emails = count_emails + 1
 
 print "There are %d emails in the dataset" % count_emails
+
+count_no_payments = 0
+for key in enron_data.keys():
+	if enron_data[key]["total_payments"] == 'NaN':
+		count_no_payments = count_no_payments + 1
+
+print "There are %d people who have unknown total payments,\nthey represent %f percent of the data set" % (count_no_payments, float(count_no_payments) / len(enron_data) * 100)
+
+count_nopay_poi = 0
+for key in enron_data.keys():
+	if enron_data[key]["total_payments"] == 'NaN' and enron_data[key]["poi"]:
+		count_nopay_poi = count_nopay_poi + 1
+
+print "%d poi have no info on their payments, this represents %% %f of the dataset" % (count_nopay_poi, 100 * float(count_nopay_poi) / len(enron_data))
