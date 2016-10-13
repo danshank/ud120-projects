@@ -1,0 +1,39 @@
+import pickle
+
+data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r") )
+#gets rid of the data point associated with the TOTAL of all employees
+data_dict.pop("TOTAL", 0)
+#keys = data_dict.keys()
+#people = []
+#stock_options = []
+
+def find_min_max_values(data_dict, value_name):
+	#first create a list of people and a second with the associated desired value
+	people = []
+	value_list = []
+	keys = data_dict.keys()
+	for key in keys:
+		value = data_dict[key][value_name]
+		if value != 'NaN':
+			value_list.append(value)
+			people.append(key)
+		else:
+			None
+	#then returns the max and min values, as well as the people associated with them
+	return people, value_list
+
+#print keys
+#print stock_options
+
+people1, stock_options = find_min_max_values(data_dict, "exercised_stock_options")
+people2, salaries = find_min_max_values(data_dict, "salary")
+
+print "The person who exercised the most stock options was %s" % people1[stock_options.index(max(stock_options))]
+print "and they exercised $%d" % max(stock_options)
+print "The person who exercised the least was %s" % people1[stock_options.index(min(stock_options))]
+print "and they exercised $%d" % min(stock_options)
+
+print "The person who had the highest salary was %s" % people2[salaries.index(max(salaries))]
+print "and was paid $%d" % max(salaries) 
+print "The person who had the lowest salary was %s" % people2[salaries.index(min(salaries))]
+print "and was paid $%d" % min(salaries)
